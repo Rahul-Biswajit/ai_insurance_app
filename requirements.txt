@@ -1,0 +1,36 @@
+# =============================================================================
+# AegisAI — Insurance Onboarding & Risk Dashboard
+# =============================================================================
+# The app runs fully offline on the CORE block alone (deterministic mode:
+# regex intake extraction, TF-IDF RAG, signature-based guardrails).
+# Each OPTIONAL block upgrades one subsystem and is detected at import time.
+# =============================================================================
+
+# ----------------------------- CORE (required) ------------------------------
+streamlit>=1.35
+streamlit-echarts>=0.4.0
+pandas>=2.0
+pydantic>=2.6
+
+# --------------------------- OPTIONAL: live LLMs ----------------------------
+# Enables the Intake Agent's LLM extraction path, LLM-phrased risk summaries
+# and generative Q&A. Without these the app uses deterministic equivalents.
+# langchain>=0.3
+# langchain-openai>=0.2          # or langchain-anthropic, langchain-ollama, ...
+# python-dotenv>=1.0
+
+# --------------------- OPTIONAL: embedding-based RAG ------------------------
+# Replaces the built-in TF-IDF index with ChromaDB vector search.
+# Set VECTOR_BACKEND=chroma (or leave "auto" to use it when importable).
+# chromadb>=0.5
+
+# ------------------------ OPTIONAL: NeMo Guardrails -------------------------
+# Adds semantic Colang rails on top of the always-on signature engine.
+# Requires Python <=3.12 at time of writing.
+# nemoguardrails>=0.11
+
+# ----------------------- OPTIONAL: LangGraph runtime ------------------------
+# Compiles the same node functions into a StateGraph via
+# orchestrator.workflow.build_langgraph(). The deterministic state machine
+# remains the default execution engine either way.
+# langgraph>=0.2
